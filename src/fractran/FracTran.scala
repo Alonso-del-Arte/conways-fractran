@@ -19,5 +19,4 @@ object FracTran {
 //  def process(n: Long, fracts: Array[Fraction]): LazyList[Long] =
 //    LazyList.iterate(n)(iter(fracts, _))
 
-
 }
