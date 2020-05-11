@@ -2,6 +2,9 @@ package fractran
 
 import fractions.Fraction
 
+/**
+ * Conway's PrimeGame. Gives the prime numbers as exponents for powers of 2.
+ */
 object PrimeGame extends FracTranProgram with Streamable {
 
   override val INITIAL_NUMBER: Fraction = Fraction(2, 1)
@@ -14,8 +17,8 @@ object PrimeGame extends FracTranProgram with Streamable {
   override def isValidStartingFraction(fraction: Fraction): Boolean
     = fraction.denominator == 1L
 
-  override def isValidEndingFraction(fraction: Fraction): Boolean =
-    (fraction.denominator == 1L) && (fraction.numerator ==
+  override def isValidEndingFraction(fraction: Fraction): Boolean
+    = (fraction.denominator == 1L) && (fraction.numerator ==
       java.lang.Long.highestOneBit(fraction.numerator))
 
 }

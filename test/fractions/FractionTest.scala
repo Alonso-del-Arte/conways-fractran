@@ -11,9 +11,11 @@ class FractionTest {
       val failMsg = "Should not have been able to create bad fraction " + badFraction.toString
       fail(failMsg)
     } catch {
-      case iae: IllegalArgumentException => println("Trying to create fraction with denominator 0 correctly caused IllegalArgumentException")
+      case iae: IllegalArgumentException =>
+        println("Trying to create fraction with denominator 0 correctly caused IllegalArgumentException")
         println("\"" + iae.getMessage + "\"")
-      case ae: ArithmeticException => println("ArithmeticException is adequate for trying to create fraction with denominator 0")
+      case ae: ArithmeticException =>
+        println("ArithmeticException is adequate for trying to create fraction with denominator 0")
         println("\"" + ae.getMessage + "\"")
       case re: RuntimeException => val failMsg = (re.getClass.getName
           + " is the wrong exception to throw for trying to create fraction with denominator 0")
@@ -176,6 +178,16 @@ class FractionTest {
         println("\"" + ae.getMessage + "\"")
       case e: Exception => fail(e.getMessage)
     }
+  }
+
+  @Test def testIsInteger(): Unit = {
+    val two = new Fraction(2, 1)
+    assert(two.isInteger, "2 should be recognized as an integer")
+  }
+
+  @Test def testIsNotInteger(): Unit = {
+    val oneHalf = new Fraction(1, 2)
+    assert(!oneHalf.isInteger, "1/2 should not be recognized as an integer")
   }
 
   @Test def testTo() {

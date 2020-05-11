@@ -80,4 +80,31 @@ class PrimeGameTest {
     assertEquals(expected, actual)
   }
 
+  @Test def testInterpret(): Unit = {
+    println("interpret")
+    val result = new Fraction(32, 1)
+    val expected = 5
+    val actual = PrimeGame.interpret(result)
+    assertEquals(expected, actual)
+  }
+
+  @Test def testDoNotInterpret(): Unit = {
+    val result = new Fraction(32, 65)
+    try {
+      val interpretation = PrimeGame.interpret(result)
+      val failMsg = ("Trying to interpret " + result.toString
+        + " should have caused an exception, not given interpretation "
+        + interpretation.toString)
+      fail(failMsg)
+    } catch {
+      case iae: IllegalArgumentException => println("Trying to interpret "
+        + result.toString + " correctly caused IllegalArgumentException")
+        println("\"" + iae.getMessage + "\"")
+      case re: RuntimeException => val failMsg = (re.getClass.getName
+        + " is the wrong exception to throw for trying to interpret "
+        + result.toString)
+        fail(failMsg)
+    }
+  }
+
 }

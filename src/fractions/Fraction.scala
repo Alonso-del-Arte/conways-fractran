@@ -83,6 +83,8 @@ class Fraction(numer: Long, denom: Long = 1L) extends Ordered[Fraction] {
     new Fraction(this.denominator, this.numerator)
   }
 
+  def isInteger: Boolean = this.denominator == 1L
+
   def numericApproximation: Double = this.numerator.asInstanceOf[Double] / this.denominator.asInstanceOf[Double]
 
   def to(end: Fraction): FractionRange = {
