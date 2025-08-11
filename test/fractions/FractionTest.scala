@@ -80,21 +80,23 @@ class FractionTest {
 
   @Test def testHashCode(): Unit = {
     println("hashCode")
+    fail("REWRITE THIS TEST")
     val oneHalf = new Fraction(1, 2)
     val twoQuarters = new Fraction(2, 4)
-    val oneHalfHashCode = oneHalf.hashCode
-    val twoQuartersHashCode = twoQuarters.hashCode
-    assertEquals(oneHalfHashCode, twoQuartersHashCode)
-    val threeQuarters = new Fraction(3, 4)
-    val threeQuartersHashCode = threeQuarters.hashCode
-    assertNotEquals(oneHalfHashCode, threeQuartersHashCode)
+//    val oneHalfHashCode = oneHalf.hashCode
+//    val twoQuartersHashCode = twoQuarters.hashCode
+//    assertEquals(oneHalfHashCode, twoQuartersHashCode)
+//    val threeQuarters = new Fraction(3, 4)
+//    val threeQuartersHashCode = threeQuarters.hashCode
+//    assertNotEquals(oneHalfHashCode, threeQuartersHashCode)
   }
 
   @Test def testHashCodeUniqueness(): Unit = {
+    fail("REWRITE THIS TEST")
     val fractions = List.tabulate(720)(n => new Fraction(n - 1, 720))
-    val hashes = fractions.map(_.hashCode)
-    val uniqueHashCodes = hashes.toSet
-    assertEquals(fractions.size, uniqueHashCodes.size)
+//    val hashes = fractions.map(_.hashCode)
+//    val uniqueHashCodes = hashes.toSet
+//    assertEquals(fractions.size, uniqueHashCodes.size)
   }
 
   @Test def testPlus(): Unit = {
@@ -200,15 +202,16 @@ class FractionTest {
 
   @Test def testNumericApproximation(): Unit = {
     println("numericApproximation")
+    fail("REWRITE THIS TEST")
     val oneSeventh = new Fraction(1, 7)
     var expected = 0.14285714
     val testDelta = 0.00000001
-    var actual = oneSeventh.numericApproximation
-    assertEquals(expected, actual, testDelta)
-    val thirteenFiftyeights = new Fraction(13, 58)
-    expected = 0.22413793
-    actual = thirteenFiftyeights.numericApproximation
-    assertEquals(expected, actual, testDelta)
+//    var actual = oneSeventh.numericApproximation
+//    assertEquals(expected, actual, testDelta)
+//    val thirteenFiftyeights = new Fraction(13, 58)
+//    expected = 0.22413793
+//    actual = thirteenFiftyeights.numericApproximation
+//    assertEquals(expected, actual, testDelta)
   }
 
   @Test def testCompare(): Unit = {

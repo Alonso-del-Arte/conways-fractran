@@ -29,8 +29,9 @@ object FibonacciGame extends FracTranProgram {
     (fraction.numerator % 78 == 0) && fraction.denominator == 1L &&
       isPowerOfFive(fraction / 78)
 
-  override def isValidEndingFraction(fraction: Fraction): Boolean =
-    (fraction.denominator == 1L) && (fraction.numerator ==
-      java.lang.Long.highestOneBit(fraction.numerator))
+  // TODO: Write tests for this
+  override def isValidEndingFraction(fraction: Fraction): Boolean = false
+//    (fraction.denominator == 1L) && (fraction.numerator ==
+//      java.lang.Long.highestOneBit(fraction.numerator))
 
 }

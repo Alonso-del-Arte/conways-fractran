@@ -17,8 +17,9 @@ object PrimeGame extends FracTranProgram with Streamable {
   override def isValidStartingFraction(fraction: Fraction): Boolean
     = fraction.denominator == 1L
 
-  override def isValidEndingFraction(fraction: Fraction): Boolean
-    = (fraction.denominator == 1L) && (fraction.numerator ==
-      java.lang.Long.highestOneBit(fraction.numerator))
+  // TODO: Rewrite tests for this
+  override def isValidEndingFraction(fraction: Fraction): Boolean = false
+//    = (fraction.denominator == 1L) && (fraction.numerator ==
+//      java.lang.Long.highestOneBit(fraction.numerator))
 
 }

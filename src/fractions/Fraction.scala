@@ -2,6 +2,8 @@ package fractions
 
 import calculators.NumberTheoreticFunctionsCalculator.gcd
 
+import scala.math.BigInt
+
 object Fraction {
 
   val HASH_SEP = 65536
@@ -30,13 +32,14 @@ object Fraction {
 
 }
 
-class Fraction(numer: Long, denom: Long = 1L) extends Ordered[Fraction] {
+class Fraction(numer: BigInt, denom: BigInt = 1: BigInt)
+  extends Ordered[Fraction] {
   if (denom == 0) {
     throw new IllegalArgumentException("Denominator 0 is not allowed")
   }
-  private val reducer = gcd(numer, denom) * (if (denom < 0) -1 else 1)
-  val numerator: Long = numer / reducer
-  val denominator: Long = denom / reducer
+  private val reducer = numer.gcd(denom) * (if (denom < 0) -1 else 1)
+  val numerator: BigInt = numer / reducer
+  val denominator: BigInt = denom / reducer
 
   override def toString: String = if (this.denominator == 1) {
     this.numerator.toString
@@ -91,13 +94,14 @@ class Fraction(numer: Long, denom: Long = 1L) extends Ordered[Fraction] {
     new FractionRange(this, end)
   }
 
-  override def compare(that: Fraction): Int = {
+  // TODO: Write tests for this
+  override def compare(that: Fraction): Int = 0 /* {
     val diff = this - that
     diff.numerator match {
       case 0 => 0
       case n if n < 0 => -1
       case _ => 1
     }
-  }
+  } */
 
 }
