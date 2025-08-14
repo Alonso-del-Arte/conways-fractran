@@ -12,27 +12,25 @@ class FractionTest {
     val numBits = Random.nextInt(64) + 16
     val numer = BigInt(numBits, Random)
     val msg = s"Numerator $numer with denominator 0 should cause exception"
-    fail("FINISH REWRITING")
-    val exc = assertThrows(classOf[ArithmeticException], () => {
-      val badFraction = new Fraction(numer, 0: BigInt)
-      val msgAddendum = s", not created fraction ${badFraction.toString}"
-      println(msg + msgAddendum)
-    }, msg)
+    var excMsg = ""
     try {
       val badFraction = new Fraction(numer, 0: BigInt)
-      val failMsg = "Should not have been able to create bad fraction " + badFraction.toString
-      fail(failMsg)
+      val msgAddendum = s", not created fraction ${badFraction.toString}"
+      val noExcMsg = msg + msgAddendum
+      fail(noExcMsg)
     } catch {
-      case iae: IllegalArgumentException =>
-        println("Trying to create fraction with denominator 0 correctly caused IllegalArgumentException")
-        println("\"" + iae.getMessage + "\"")
-      case ae: ArithmeticException =>
-        println("ArithmeticException is adequate for trying to create fraction with denominator 0")
-        println("\"" + ae.getMessage + "\"")
-      case re: RuntimeException => val failMsg = (re.getClass.getName
-          + " is the wrong exception to throw for trying to create fraction with denominator 0")
-        fail(failMsg)
+      case ae: ArithmeticException => excMsg = ae.getMessage
+      case iae: IllegalArgumentException => excMsg = iae.getMessage
+      case re: RuntimeException =>
+        val msgAddendum = s", but not ${re.getClass.getName}"
+        val wrongExcMsg = msg + msgAddendum
+        fail(wrongExcMsg)
     }
+    assert(excMsg != null, "Exception message should not be null")
+    assert(excMsg.nonEmpty, "Exception message should not be empty")
+    val numStr = numer.toString
+    val containsMsg = "Exception message should contain \"" + numStr + "\""
+    assert(excMsg.contains(numStr), containsMsg)
   }
 
   @Test def testImplicitConversionFromInt(): Unit = {
