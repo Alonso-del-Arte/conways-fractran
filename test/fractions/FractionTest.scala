@@ -35,6 +35,7 @@ class FractionTest {
   }
 
   @Test def testImplicitConversionFromInt(): Unit = {
+    fail("REWRITE WITH PSEUDORANDOM NUMBERS")
     val expected = new Fraction(49)
     val sevenSixths = new Fraction(7, 6)
     val actual = 42 * sevenSixths
