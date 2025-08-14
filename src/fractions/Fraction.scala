@@ -33,7 +33,7 @@ object Fraction {
 class Fraction(numer: BigInt, denom: BigInt = 1: BigInt)
   extends Ordered[Fraction] {
   if (denom == 0) {
-    throw new IllegalArgumentException("Denominator 0 is not allowed")
+    throw new RuntimeException("Denominator 0 is not allowed")
   }
   private val reducer = numer.gcd(denom) * (if (denom < 0) -1 else 1)
   val numerator: BigInt = numer / reducer
