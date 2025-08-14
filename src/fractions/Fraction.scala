@@ -1,7 +1,5 @@
 package fractions
 
-import calculators.NumberTheoreticFunctionsCalculator.gcd
-
 import scala.math.BigInt
 
 object Fraction {
