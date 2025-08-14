@@ -1,7 +1,5 @@
 package fractions
 
-import scala.math.BigInt
-
 object Fraction {
 
   val HASH_SEP = 65536
@@ -29,6 +27,8 @@ object Fraction {
   }
 
 }
+
+import scala.math.BigInt
 
 class Fraction(numer: BigInt, denom: BigInt = 1: BigInt)
   extends Ordered[Fraction] {
