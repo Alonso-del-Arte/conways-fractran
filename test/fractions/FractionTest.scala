@@ -3,11 +3,23 @@ package fractions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions._
 
+import scala.math.BigInt
+import scala.util.Random
+
 class FractionTest {
 
-  @Test def testConstructor(): Unit = {
+  @Test def testConstructorRejectsDenomZero(): Unit = {
+    val numBits = Random.nextInt(64) + 16
+    val numer = BigInt(numBits, Random)
+    val msg = s"Numerator $numer with denominator 0 should cause exception"
+    fail("FINISH REWRITING")
+    val exc = assertThrows(classOf[ArithmeticException], () => {
+      val badFraction = new Fraction(numer, 0: BigInt)
+      val msgAddendum = s", not created fraction ${badFraction.toString}"
+      println(msg + msgAddendum)
+    }, msg)
     try {
-      val badFraction = new Fraction(7, 0)
+      val badFraction = new Fraction(numer, 0: BigInt)
       val failMsg = "Should not have been able to create bad fraction " + badFraction.toString
       fail(failMsg)
     } catch {
