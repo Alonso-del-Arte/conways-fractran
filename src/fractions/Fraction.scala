@@ -33,7 +33,8 @@ import scala.math.BigInt
 class Fraction(numer: BigInt, denom: BigInt = 1: BigInt)
   extends Ordered[Fraction] {
   if (denom == 0) {
-    throw new RuntimeException("Denominator 0 is not allowed")
+    val excMsg = s"Can't use denominator 0 with numerator ${numer.toString}"
+    throw new IllegalArgumentException(excMsg)
   }
   private val reducer = numer.gcd(denom) * (if (denom < 0) -1 else 1)
   val numerator: BigInt = numer / reducer
