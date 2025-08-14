@@ -31,6 +31,7 @@ class FractionTest {
     val numStr = numer.toString
     val containsMsg = "Exception message should contain \"" + numStr + "\""
     assert(excMsg.contains(numStr), containsMsg)
+    println(excMsg)
   }
 
   @Test def testImplicitConversionFromInt(): Unit = {
